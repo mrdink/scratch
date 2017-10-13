@@ -1,6 +1,12 @@
 .off-canvas {
   padding-top: ($global-padding * 2);
 
+  .admin-bar & {
+    @media screen and (max-width: 782px) {
+      top: 46px;
+    }
+  }
+
   .menu {
     @include flex-grid-column();
     margin-bottom: $global-margin;

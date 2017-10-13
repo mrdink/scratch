@@ -1,3 +1,11 @@
+.menu-item-has-children {
+  .submenu {
+    .no-js & {
+      display: none;
+    }
+  }
+}
+
 .comment-navigation,
 .posts-navigation,
 .post-navigation {

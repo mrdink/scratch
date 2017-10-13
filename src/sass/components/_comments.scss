@@ -1,9 +1,10 @@
 .comments-area {
-  padding: rem-calc(100 $global-padding);
-}
+  padding: rem-calc(100 0);
+  word-wrap: break-word;
 
-.comments-area > :last-child {
-  margin-bottom: 0;
+  & > :last-child {
+    margin-bottom: 0;
+  }
 }
 
 .comment-list + .comment-respond,
@@ -29,6 +30,15 @@
   .trackback {
     padding: rem-calc(24 0);
   }
+
+  .children {
+    margin: 0;
+    list-style: none;
+
+    & > li {
+      padding-left: rem-calc(12);
+    }
+  }
 }
 
 .comments-title + .comment-list > li:first-child > article,
@@ -38,26 +48,28 @@
   border-top: 0;
 }
 
-.comment-list {
-  .children {
-    margin: 0;
-    list-style: none;
+.comment {
+  padding: 0 $global-padding;
 
-    & > li {
-      padding-left: 12px;
-    }
+  &.even {
+    background-color: $white;
+  }
+
+  &.odd {
+    background-color: smart-scale($table-background, $table-color-scale);
   }
 }
 
 .comment-author {
-  margin-bottom: 6px;
+  margin-bottom: rem-calc(6);
 
   .avatar {
     position: relative;
     float: left;
     width: 24px;
     height: 24px;
-    margin-right: 12px;
+    margin-right: rem-calc(12);
+    border-radius: 100%;
   }
 }
 
@@ -83,7 +95,7 @@
 .pingback {
   .edit-link {
     display: inline-block;
-    margin-left: 6px;
+    margin-left: rem-calc(6);
   }
 }
 
@@ -93,18 +105,22 @@
   }
 }
 
-.comment-content ul,
-.comment-content ol {
-  margin: rem-calc(0 0 24 20);
-}
+.comment-content {
+  margin-bottom: $global-margin;
 
-.comment-content li > ul,
-.comment-content li > ol {
-  margin-bottom: 0;
-}
+  ul,
+  ol {
+    margin: rem-calc(0 0 24 20);
+  }
 
-.comment-content > :last-child {
-  margin-bottom: 0;
+  li > ul,
+  li > ol {
+    margin-bottom: 0;
+  }
+
+  & > :last-child {
+    margin-bottom: 0;
+  }
 }
 
 .comment-list {
@@ -112,20 +128,8 @@
     font-size: rem-calc(12);
 
     a {
-      display: inline-block;
-      margin-top: rem-calc(24);
-      padding: 6px 12px 5px;
-      line-height: 1;
-      text-transform: uppercase;
-
-      a {
-        &:hover,
-        &:focus {
-          outline: 0;
-          border-color: currentColor;
-          color: $primary-color;
-        }
-      }
+      @include button($style: 'hollow');
+      font-size: rem-calc(14);
     }
   }
 }
@@ -135,7 +139,7 @@
 
   label {
     display: block;
-    margin-bottom: 6px;
+    margin-bottom: rem-calc(6);
     font-size: rem-calc(12);
     font-weight: $global-weight-bold;
     letter-spacing: 0.05em;
@@ -183,14 +187,10 @@
 
 .comment-reply-title {
   small {
-    font-size: 100%;
-
     a {
+      @include button($background: $alert-color, $style: 'hollow');
       float: right;
-      width: 26px;
-      height: 32px;
-      border: 0;
-      overflow: hidden;
+      font-size: rem-calc(12);
     }
   }
 }
